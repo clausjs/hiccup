@@ -1,8 +1,9 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Icon } from 'components/common/Icon'
 import { triggerEdit } from 'components/EditLinkModal'
 import { CategoryCard, AddCategoryCard } from './CategoryCard'
 import styles from './index.module.css'
+import cx from 'classnames';
 import { CategoriesEntity } from 'modules/config/types'
 import { transformEntityToFields } from 'components/EditLinkModal/transforms'
 import { EditModalField } from 'components/EditLinkModal/EditLinkModal'
@@ -27,25 +28,29 @@ const Category = ({
   index: categoryIndex,
   editing,
   ...editingProps
-}: CategoryProps) => (
-  <div className={styles.category} data-testid="category">
-    <h1 className={styles.title}>
-      {title}
-      {editing && <EditContainer {...editingProps} title={title} />}
-    </h1>
-    <ul>
-      {links.map((link, index) => (
-        <CategoryCard
-          key={index}
-          link={link}
-          index={index}
-          categoryIndex={categoryIndex}
-        />
-      ))}
-      <AddCategoryCard title={title} categoryIndex={categoryIndex} />
-    </ul>
-  </div>
-)
+}: CategoryProps) => {
+  const [expanded, setExpanded] = useState<boolean>(true);
+
+  return (
+    <div className={styles.category} data-testid="category">
+      <h1 className={cx(styles.title, expanded ? 'show-category' : '')} onClick={() => setExpanded(!expanded)}>
+        {title}
+        {editing && <EditContainer {...editingProps} title={title} />}
+      </h1>
+      <ul>
+        {links.map((link, index) => (
+          <CategoryCard
+            key={index}
+            link={link}
+            index={index}
+            categoryIndex={categoryIndex}
+          />
+        ))}
+        <AddCategoryCard title={title} categoryIndex={categoryIndex} />
+      </ul>
+    </div>
+  );
+}
 
 const EditContainer = ({ onEdit, onDelete, title }: EditContainerProps) => {
   const categoryEntity = useMemo(() => ({ title }), [title])

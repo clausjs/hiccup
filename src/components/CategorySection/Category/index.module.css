@@ -9,6 +9,14 @@
   color: var(--theme-color-1);
 }
 
+.category .ul {
+  display: none;
+}
+
+.category.show-category .ul {
+  display: block;
+}
+
 .edit-icon,
 .delete-icon {
   opacity: 0.7;
