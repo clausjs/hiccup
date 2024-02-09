@@ -2,6 +2,9 @@
   color: var(--theme-color-1);
   text-transform: uppercase;
   font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .edit-container {
@@ -9,13 +12,35 @@
   color: var(--theme-color-1);
 }
 
-.category .ul {
+.category {
+  ul {
+    display: block;
+  }
+}
+
+.categoryHidden {
+  ul {
+    display: none;
+  }
+}
+
+.expandIcon {
+  transform: rotate(90deg);
+  transition: transform 0.5s var(--ease-1);
+}
+
+.collapseIcon {
+  transform: rotate(180deg);
+  transition: transform 0.5s var(--ease-1);
+}
+
+/* .category .title .ul {
   display: none;
 }
 
-.category.show-category .ul {
+.category .title.show-category .ul {
   display: block;
-}
+} */
 
 .edit-icon,
 .delete-icon {

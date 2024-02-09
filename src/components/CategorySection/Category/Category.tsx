@@ -3,10 +3,10 @@ import { Icon } from 'components/common/Icon'
 import { triggerEdit } from 'components/EditLinkModal'
 import { CategoryCard, AddCategoryCard } from './CategoryCard'
 import styles from './index.module.css'
-import cx from 'classnames';
 import { CategoriesEntity } from 'modules/config/types'
 import { transformEntityToFields } from 'components/EditLinkModal/transforms'
 import { EditModalField } from 'components/EditLinkModal/EditLinkModal'
+import { MdExpandLess } from "react-icons/md";
 
 interface EditProps {
   onEdit: (fields: EditModalField[]) => void
@@ -29,13 +29,13 @@ const Category = ({
   editing,
   ...editingProps
 }: CategoryProps) => {
-  const [expanded, setExpanded] = useState<boolean>(true);
+  const [ expanded, setExpanded ] = useState<boolean>(editing ? true : false);
 
   return (
-    <div className={styles.category} data-testid="category">
-      <h1 className={cx(styles.title, expanded ? 'show-category' : '')} onClick={() => setExpanded(!expanded)}>
+    <div className={expanded ? styles.category : styles.categoryHidden} data-testid="category">
+      <h1 className={styles.title} onClick={() => { if (!editing) setExpanded(!expanded) }}>
         {title}
-        {editing && <EditContainer {...editingProps} title={title} />}
+        {editing ? <EditContainer {...editingProps} title={title} /> : <span className={expanded ? styles.collapseIcon : styles.expandIcon}><MdExpandLess /></span>}
       </h1>
       <ul>
         {links.map((link, index) => (
