@@ -1,3 +1,14 @@
 .featured {
     grid-template-columns: repeat(4, 1fr);
 }
+
+.pageLeft {
+    color: white;
+    height: 100%;
+}
+
+.pageRight {
+    color: white;
+    height: 100%;
+    align-self: flex-end;
+}

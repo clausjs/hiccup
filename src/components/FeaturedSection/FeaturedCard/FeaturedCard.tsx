@@ -1,4 +1,4 @@
-import { useMemo, FC } from 'react'
+import { useMemo, FC, MouseEvent } from 'react'
 import process from 'process'
 import { Card } from 'components/Card'
 import { Icon } from 'components/common/Icon'
@@ -20,12 +20,10 @@ interface EditContainerProps {
   dropEditBg: DropProps<HTMLDivElement>
 }
 interface Props extends EditContainerProps {
-  editing: boolean
-  dropEditLink: DropProps<HTMLDivElement>
-  dropEditBg: DropProps<HTMLDivElement>
+  children?: React.ReactNode;
 }
 
-const FeaturedCard: FC<Props> = ({ link, editing, ...editingProps }) => {
+const FeaturedCard: FC<Props> = ({ link, children, editing, ...editingProps }) => {
   const { name, link: linkUrl, background = getRandomBg('medium') } = link || {}
 
   const backgroundUrl = isAbsoluteURL(background)
@@ -38,15 +36,18 @@ const FeaturedCard: FC<Props> = ({ link, editing, ...editingProps }) => {
   }
 
   return (
-    <Card
-      href={!editing && linkUrl}
-      className={classNames([styles.container])}
-      data-testid="featured-card"
-      {...cardProps}
-    >
-      <EditContainer {...editingProps} link={link} editing={editing} />
-      {name}
-    </Card>
+    <>
+      <Card
+        href={!editing && linkUrl}
+        className={classNames([styles.container])}
+        data-testid="featured-card"
+        {...cardProps}
+      >
+        <EditContainer {...editingProps} link={link} editing={editing} />
+        {children}
+        {name}
+      </Card>
+    </>
   )
 }
 

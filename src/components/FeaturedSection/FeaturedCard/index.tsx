@@ -14,11 +14,12 @@ import { useDrop } from 'components/common/Drop'
 import { DEFAULT_FEATURED_LINK } from 'modules/config'
 
 interface Props {
+  children?: React.ReactNode;
   index: number
   link: FeaturedEntity
 }
 
-const ConnectedFeaturedCard = ({ index: cardIndex, link }: Props) => {
+const ConnectedFeaturedCard = ({ children, index: cardIndex, link }: Props) => {
   const { editing, config, storeActions } = useConfigContext()
 
   const onDelete = useCallback(() => {
@@ -56,6 +57,10 @@ const ConnectedFeaturedCard = ({ index: cardIndex, link }: Props) => {
   )
   const dropEditLink = useDrop<HTMLDivElement, FeaturedEntity>(newLink, onEdit)
 
+  let pager: 'left' | 'right' | undefined;
+  if (cardIndex === 0) pager = 'left';
+  else if (cardIndex === 3) pager = 'right';
+
   return (
     <FeaturedCard
       link={link}
@@ -64,7 +69,9 @@ const ConnectedFeaturedCard = ({ index: cardIndex, link }: Props) => {
       onDelete={onDelete}
       dropEditBg={dropEditBg}
       dropEditLink={dropEditLink}
-    />
+    >
+      {children}
+    </FeaturedCard>
   )
 }
 
