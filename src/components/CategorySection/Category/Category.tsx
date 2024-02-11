@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Icon } from 'components/common/Icon'
 import { triggerEdit } from 'components/EditLinkModal'
 import { CategoryCard, AddCategoryCard } from './CategoryCard'
@@ -30,6 +30,10 @@ const Category = ({
   ...editingProps
 }: CategoryProps) => {
   const [ expanded, setExpanded ] = useState<boolean>(editing ? true : false);
+
+  useEffect(() => {
+    setExpanded(editing);
+  }, [editing]);
 
   return (
     <div className={expanded ? styles.category : styles.categoryHidden} data-testid="category">
