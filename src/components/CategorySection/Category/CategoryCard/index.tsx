@@ -2,7 +2,7 @@ import { useCallback, FC } from 'react'
 import { useConfigContext } from 'components/ConfigContext'
 import { CategoryCard } from './CategoryCard'
 import { AddCategoryCard } from './AddCategoryCard'
-import { LinksEntity } from 'modules/config/types'
+import { LinkEntityWithIcon, LinksEntity } from 'modules/config/types'
 import { DEFAULT_LINK } from 'modules/config'
 import { EditModalField } from 'components/EditLinkModal/EditLinkModal'
 import { transformFieldsToEntity } from 'components/EditLinkModal/transforms'
@@ -15,7 +15,7 @@ import { useDrop } from 'components/common/Drop'
 interface Props {
   index: number
   categoryIndex: number
-  link: LinksEntity
+  link: LinkEntityWithIcon
 }
 
 const ConnectedCategoryCard = ({
@@ -30,7 +30,7 @@ const ConnectedCategoryCard = ({
 const useCategoryCard = (
   cardIndex: number,
   categoryIndex: number,
-  link: LinksEntity
+  link: LinkEntityWithIcon
 ) => {
   const { editing, config, storeActions } = useConfigContext()
 
@@ -48,7 +48,7 @@ const useCategoryCard = (
     (modalData: EditModalField[]) => {
       const updatedCategoryLink = transformFieldsToEntity(
         modalData
-      ) as LinksEntity
+      ) as LinkEntityWithIcon
       const { config: newConfig, invalid } = editCategoryLink(config, {
         categoryIndex,
         cardIndex,
@@ -84,7 +84,7 @@ const ConnectedAddCategoryCard: FC<{
 
   const onSave = useCallback(
     (modalData: EditModalField[]) => {
-      const newCategoryLink = transformFieldsToEntity(modalData) as LinksEntity
+      const newCategoryLink = transformFieldsToEntity(modalData) as LinkEntityWithIcon
       const { config: newConfig, invalid } = addCategoryLink(config, {
         categoryIndex,
         categorylink: newCategoryLink,

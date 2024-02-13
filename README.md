@@ -178,6 +178,10 @@ All the config information is stored in **LocalStorage** and never sent to a ser
 
 Refer to the [JSON Scheme file](src/modules/validateConfig/schema.json) for the latest schema.
 
+#### Category Icons
+
+This library comes equipped with [react-icons](https://react-icons.github.io/react-icons/) for some things in its UI. A single set of icons is being bundled with the app in order to add icons to the category links if so desired.
+
 ### Caching
 
 The app now supports 4 caching strategies, these are useful if you dont want to frequently update your configs or run it completely offine

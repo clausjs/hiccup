@@ -28,12 +28,13 @@
       "title": "Category 1",
       "links": [
         {
-          "name": "Link 1",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "name": "Radarr",
+          "link": "https://google.com",
+          "icon": "FaLink"
         },
         {
           "name": "Link 2",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "link": "https://google.com"
         }
       ]
     },
