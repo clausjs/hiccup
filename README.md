@@ -176,11 +176,11 @@ All the config information is stored in **LocalStorage** and never sent to a ser
 
 #### Config structure
 
-Refer to the [JSON Scheme file](src/modules/validateConfig/schema.json) for the latest schema.
+Refer to the [JSON Schema file](src/modules/validate/index.ts) for the latest schema.
 
 #### Category Icons
 
-This library comes equipped with [react-icons](https://react-icons.github.io/react-icons/) for some things in its UI. A single set of icons is being bundled with the app in order to add icons to the category links if so desired.
+This library comes equipped with [react-icons](https://react-icons.github.io/react-icons/) for some things in its UI. A single set of icons [Font Awesome 6](https://react-icons.github.io/react-icons/icons/fa6/) is being bundled with the app in order to add icons to the category links if so desired. The schema has been updated to allow for an 'icon' property on category links. It can either be a string referring to a font awesome 6 font (e.g. "FaLink") or an object with a url for a remote icon option `{ url: https://url-to-image.com, name: "example image" }`. For accessibility you can also add a `name`. This will add an icon next to a category link for easier visibility.
 
 ### Caching
 
