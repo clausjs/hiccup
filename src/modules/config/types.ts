@@ -29,6 +29,7 @@ export interface RemoteIcon {
 
 export interface LinkEntityWithIcon extends LinksEntity {
   icon?: string | RemoteIcon;
+  iconSize?: number;
 }
 
 export interface NewEntity extends LinkEntityWithIcon {
@@ -90,7 +91,22 @@ export const schema: JSONSchemaType<ConfigEntity> = {
               properties: {
                 name: { type: 'string' },
                 link: { type: 'string' },
-                icon: { type: 'string', nullable: true },
+                icon: {
+                  type: ['string', 'object'],
+                  nullable: true,
+                  oneOf: [
+                    { type: 'string', nullable: true },
+                    {
+                      type: 'object',
+                      properties: {
+                        url: { type: 'string' },
+                        name: { type: 'string', nullable: true }
+                      },
+                      required: ['url']
+                    }
+                  ]
+                },
+                iconSize: { type: 'number', nullable: true },
                 tags: { type: 'string', nullable: true },
               },
               required: ['link', 'name']

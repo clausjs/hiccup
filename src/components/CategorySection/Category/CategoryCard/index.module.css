@@ -5,23 +5,29 @@
 .categoryCardContent {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.categoryCardLink .name {
+.categoryCardLink {
+  margin: auto;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+
+.name {
+  display: flex;
   transform: translateY(6px);
   transition: all 0.2s ease;
 }
 
-.categoryCardLink .link {
+.link {
   opacity: 0;
   font-size: 0.7em;
   transition: all 0.2s ease;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: column;
 }
 
 .container:hover > .categoryCardContent .categoryCardLink .link {
@@ -32,9 +38,10 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  flex: auto;
 }
 
-.container:hover > .name {
+.container:hover > .categoryCardContent .categoryCardLink .name {
   transform: translateY(0px);
 }
 

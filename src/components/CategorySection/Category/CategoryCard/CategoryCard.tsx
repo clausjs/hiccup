@@ -23,14 +23,14 @@ interface CategoryCardProps extends EditContainerProps {
 }
 
 const CategoryCard = ({ link, editing, ...editProps }: CategoryCardProps) => {
-  const { name, icon, link: linkUrl } = link
+  const { name, icon, iconSize, link: linkUrl } = link;
 
   let iconContent: React.ReactNode | undefined;
   if (icon) {
     if (typeof icon === 'string') {
-      iconContent = <FontAwesomeIcon icon={(icon as FontAwesomeIconName)} />;
+      iconContent = <FontAwesomeIcon icon={(icon as FontAwesomeIconName)} size={iconSize} />;
     } else {
-      iconContent = <img src={icon.url} alt={name} />;
+      iconContent = <img src={icon.url} alt={name} style={{ width: `${iconSize ?? 16}px`, height: `${iconSize ?? 16}px` }} />;
     }
   }
 
@@ -44,10 +44,10 @@ const CategoryCard = ({ link, editing, ...editProps }: CategoryCardProps) => {
       <div className={styles.categoryCardContent}>
         <div className={styles.categoryCardLink}>
           <span className={styles.name}>{name}</span>
-          <span className={styles.link}>{linkUrl}</span>
+          <span className={styles.link} style={iconSize ? {} : { whiteSpace: 'nowrap' }}>{linkUrl}</span>
         </div>
-        {icon && <div className={styles.categoryLinkIconContainer}>
-          <FontAwesomeIcon icon={(icon as FontAwesomeIconName)} />
+        {iconContent && <div className={styles.categoryLinkIconContainer}>
+          {iconContent}
         </div>}
       </div>
       <EditContainer editing={editing} {...editProps} link={link} />
