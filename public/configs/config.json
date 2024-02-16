@@ -29,11 +29,13 @@
       "links": [
         {
           "name": "Link 1",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "link": "https://designedbyashw.in/test/hiccup",
+          "icon": "FaLink"
         },
         {
           "name": "Link 2",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "link": "https://designedbyashw.in/test/hiccup",
+          "icon": "FaBath"
         }
       ]
     },
@@ -42,11 +44,14 @@
       "links": [
         {
           "name": "Link 1",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "link": "https://designedbyashw.in/test/hiccup",
+          "icon": "FaBiohazard",
+          "iconSize": 50
         },
         {
           "name": "Link 2",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "link": "https://designedbyashw.in/test/hiccup",
+          "icon": "FaBinoculars"
         }
       ]
     },
@@ -56,7 +61,11 @@
         {
           "name": "Link 1",
           "link": "https://designedbyashw.in/test/hiccup",
-          "tags": "more searchable tags"
+          "tags": "more searchable tags",
+          "icon": {
+            "name": "dog",
+            "url": "https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg"
+          }
         }
       ]
     },
@@ -76,8 +85,9 @@
           "link": "https://designedbyashw.in/test/hiccup"
         },
         {
-          "name": "Just a long link name to make sure we are safe",
-          "link": "https://designedbyashw.in/test/hiccup"
+          "name": "Just a long link name to make sure we are safe how long can this thing actually go do you think it would eventually rear some odd errors and start pushing content into the ether because the css is allowing to much freedom from the inner content",
+          "link": "https://designedbyashw.in/test/hiccup",
+          "icon": "FaLink"
         }
       ]
     }

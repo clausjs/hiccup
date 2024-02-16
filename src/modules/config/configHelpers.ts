@@ -1,7 +1,7 @@
 import produce from 'immer'
 import uuid from 'modules/uuid'
 import toast from 'react-hot-toast'
-import { ConfigEntity, FeaturedEntity, LinksEntity, SearchProvider } from './types'
+import { ConfigEntity, FeaturedEntity, LinkEntityWithIcon, LinksEntity, SearchProvider } from './types'
 import validate from './validate'
 
 interface AddFeaturedCard {
@@ -32,7 +32,7 @@ interface EditCategory {
 
 interface AddCategoryLink {
   categoryIndex: number
-  categorylink: LinksEntity
+  categorylink: LinkEntityWithIcon
 }
 
 interface RemoveCategoryLink {
@@ -43,12 +43,12 @@ interface RemoveCategoryLink {
 interface EditCategoryLink {
   categoryIndex: number
   cardIndex: number
-  link: LinksEntity
+  link: LinkEntityWithIcon
 }
 
 interface QuickLick {
   category: string
-  link: LinksEntity
+  link: LinkEntityWithIcon
 }
 
 interface ActionResponse {

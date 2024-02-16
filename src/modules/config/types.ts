@@ -1,4 +1,5 @@
 import { JSONSchemaType } from "ajv"
+import e from "express"
 
 export interface SearchProvider {
   type: string,
@@ -18,10 +19,20 @@ export interface FeaturedEntity extends LinksEntity {
 
 export interface CategoriesEntity {
   title: string
-  links: LinksEntity[]
+  links: LinkEntityWithIcon[]
 }
 
-export interface NewEntity extends LinksEntity {
+export interface RemoteIcon {
+  url: string;
+  name?: string;
+}
+
+export interface LinkEntityWithIcon extends LinksEntity {
+  icon?: string | RemoteIcon;
+  iconSize?: number;
+}
+
+export interface NewEntity extends LinkEntityWithIcon {
   category?: string
 }
 
@@ -80,6 +91,22 @@ export const schema: JSONSchemaType<ConfigEntity> = {
               properties: {
                 name: { type: 'string' },
                 link: { type: 'string' },
+                icon: {
+                  type: ['string', 'object'],
+                  nullable: true,
+                  oneOf: [
+                    { type: 'string', nullable: true },
+                    {
+                      type: 'object',
+                      properties: {
+                        url: { type: 'string' },
+                        name: { type: 'string', nullable: true }
+                      },
+                      required: ['url']
+                    }
+                  ]
+                },
+                iconSize: { type: 'number', nullable: true },
                 tags: { type: 'string', nullable: true },
               },
               required: ['link', 'name']

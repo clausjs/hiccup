@@ -178,7 +178,13 @@ All the config information is stored in **LocalStorage** and never sent to a ser
 
 #### Config structure
 
-Refer to the [JSON Scheme file](src/modules/validateConfig/schema.json) for the latest schema.
+Refer to the [JSON Schema file](src/modules/validate/index.ts) for the latest schema.
+
+#### Category Icons
+
+This library comes equipped with [react-icons](https://react-icons.github.io/react-icons/) for some things in its UI. A single set of icons [Font Awesome 6](https://react-icons.github.io/react-icons/icons/fa6/) is being bundled with the app in order to add icons to the category links if so desired. The schema has been updated to allow for an 'icon' property on category links. It can either be a string referring to a font awesome 6 font (e.g. "FaLink") or an object with a url for a remote icon option `{ url: https://url-to-image.com, name: "example image" }`. Its best to use a square image if using a url, as the image will be displayed in a 16px x 16px square (see below). For accessibility you can also add a `name` which will be added as the name of the anchor element. Either of these values will add an icon next to each category link for better visibility.
+
+An `iconSize` may also be included on a category item: By default images/icons will be 16px squares. This is the best looking. If for whatever reason you want an icon/image larger than that you can also specify an iconSize which will be a number of pixels. This value will be used as a width/height for the image. A category link name usually applies a `white-space: nowrap`, this will be removed if a custom sized icon is added to allow the link to wrap and prevent the icon from flowing outside of the container when the link is long.
 
 ### Caching
 
