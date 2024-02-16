@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Icon } from 'components/common/Icon'
 import { triggerEdit } from 'components/EditLinkModal'
 import { CategoryCard, AddCategoryCard } from './CategoryCard'
@@ -6,6 +6,7 @@ import styles from './index.module.css'
 import { CategoriesEntity } from 'modules/config/types'
 import { transformEntityToFields } from 'components/EditLinkModal/transforms'
 import { EditModalField } from 'components/EditLinkModal/EditLinkModal'
+import { MdExpandLess } from "react-icons/md";
 
 interface EditProps {
   onEdit: (fields: EditModalField[]) => void
@@ -27,25 +28,33 @@ const Category = ({
   index: categoryIndex,
   editing,
   ...editingProps
-}: CategoryProps) => (
-  <div className={styles.category} data-testid="category">
-    <h1 className={styles.title}>
-      {title}
-      {editing && <EditContainer {...editingProps} title={title} />}
-    </h1>
-    <ul>
-      {links.map((link, index) => (
-        <CategoryCard
-          key={index}
-          link={link}
-          index={index}
-          categoryIndex={categoryIndex}
-        />
-      ))}
-      <AddCategoryCard title={title} categoryIndex={categoryIndex} />
-    </ul>
-  </div>
-)
+}: CategoryProps) => {
+  const [ expanded, setExpanded ] = useState<boolean>(editing ? true : false);
+
+  useEffect(() => {
+    setExpanded(editing);
+  }, [editing]);
+
+  return (
+    <div className={expanded ? styles.category : styles.categoryHidden} data-testid="category">
+      <h1 className={styles.title} onClick={() => { if (!editing) setExpanded(!expanded) }}>
+        {title}
+        {editing ? <EditContainer {...editingProps} title={title} /> : <span className={expanded ? styles.collapseIcon : styles.expandIcon}><MdExpandLess /></span>}
+      </h1>
+      <ul>
+        {links.map((link, index) => (
+          <CategoryCard
+            key={index}
+            link={link}
+            index={index}
+            categoryIndex={categoryIndex}
+          />
+        ))}
+        <AddCategoryCard title={title} categoryIndex={categoryIndex} />
+      </ul>
+    </div>
+  );
+}
 
 const EditContainer = ({ onEdit, onDelete, title }: EditContainerProps) => {
   const categoryEntity = useMemo(() => ({ title }), [title])
