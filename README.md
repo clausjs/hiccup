@@ -1,11 +1,13 @@
-# Hiccup
+# Singultus
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/ashwin-pc/hiccup)
+<!-- ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ashwin-pc/hiccup)
 ![GitHub](https://img.shields.io/github/license/ashwin-pc/hiccup)
 [![Tests](https://github.com/ashwin-pc/hiccup/actions/workflows/tests.yml/badge.svg?branch=master&event=push)](https://github.com/ashwin-pc/hiccup/actions/workflows/tests.yml/badge.svg?branch=master&event=push)
 [![CI](https://github.com/ashwin-pc/hiccup/actions/workflows/deploy_to_server.yml/badge.svg)](https://github.com/ashwin-pc/hiccup/actions/workflows/deploy_to_server.yml)
 
-![](public/logo192.png)
+![](public/logo192.png) -->
+
+Singultus (the scientific name for an involuntary spasm of the diagphram) is a modified version of [hiccup](https://github.com/ashwin-pc/hiccup). Using hiccup's source code it has been modified to add feature that expand its usability and visual components of the frontpage.
 
 A static start page to get to your most important links, **FAST**. You can use this for your home server, new tab using browser extentions, use the **demo page** directly or basically anywhere you can server a static webpage from!
 
@@ -15,7 +17,7 @@ A static start page to get to your most important links, **FAST**. You can use t
 
 - Static Webpage
 - Featured Links
-- Categories
+- Categories (icon support only in Singultus)
 - Drag to add links and images
 - Search
   - Supports various search providers and custom ones too
