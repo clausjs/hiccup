@@ -178,7 +178,7 @@ All the config information is stored in **LocalStorage** and never sent to a ser
 
 #### Config structure
 
-Refer to the [JSON Schema file](src/modules/validate/index.ts) for the latest schema.
+Refer to the [JSON Schema file](https://github.com/clausjs/singultus/blob/main/src/modules/config/types.ts#L53) for the latest schema.
 
 #### Category Icons
 
